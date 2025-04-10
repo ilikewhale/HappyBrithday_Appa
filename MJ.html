@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>민주야 생일축하해!❤️</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffcce6, #b3e0ff);
+            font-family: 'Arial', sans-serif;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 100%;
+            z-index: 10;
+        }
+        
+        h1 {
+            color: #ff3399;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+        
+        .cake-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+        }
+        
+        .cake {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .cake-base {
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 180px;
+            height: 80px;
+            background-color: #ffffff;
+            border-radius: 10px 10px 5px 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cake-middle {
+            position: absolute;
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 60px;
+            background-color: #ffffff;
+            border-radius: 10px 10px 5px 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .cake-top {
+            position: absolute;
+            bottom: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 40px;
+            background-color: #ffffff;
+            border-radius: 10px 10px 5px 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .strawberry {
+            position: absolute;
+            width: 20px;
+            height: 25px;
+            background-color: #ff3333;
+            border-radius: 50% 50% 60% 60%;
+        }
+        
+        .strawberry::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 5px;
+            background-color: #33cc33;
+            border-radius: 5px 5px 0 0;
+        }
+        
+        .strawberry-1 {
+            bottom: 140px;
+            left: 35%;
+        }
+        
+        .strawberry-2 {
+            bottom: 140px;
+            right: 35%;
+        }
+        
+        .strawberry-3 {
+            bottom: 185px;
+            left: 40%;
+        }
+        
+        .strawberry-4 {
+            bottom: 185px;
+            right: 40%;
+        }
+        
+        .decoration {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+        
+        .decoration-1 {
+            bottom: 90px;
+            left: 30%;
+            background-color: #ff99cc;
+        }
+        
+        .decoration-2 {
+            bottom: 90px;
+            right: 30%;
+            background-color: #ffcc99;
+        }
+        
+        .decoration-3 {
+            bottom: 90px;
+            left: 45%;
+            background-color: #99ccff;
+        }
+        
+        .decoration-4 {
+            bottom: 90px;
+            right: 45%;
+            background-color: #cc99ff;
+        }
+        
+        .decoration-5 {
+            bottom: 150px;
+            left: 55%;
+            background-color: #ff99cc;
+            width: 8px;
+            height: 8px;
+        }
+        
+        .decoration-6 {
+            bottom: 150px;
+            right: 55%;
+            background-color: #ffcc99;
+            width: 8px;
+            height: 8px;
+        }
+        
+        .candle {
+            position: absolute;
+            bottom: 180px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 10px;
+            height: 30px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+        }
+        
+        .flame {
+            position: absolute;
+            bottom: 210px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 30px;
+            background: radial-gradient(ellipse at center, #ffcc00 0%, #ff6600 100%);
+            border-radius: 50% 50% 35% 35%;
+            box-shadow: 0 0 10px #ff6600, 0 0 20px #ffcc00;
+            animation: flicker 0.5s infinite alternate;
+        }
+        
+        .frosting {
+            position: absolute;
+            width: 15px;
+            height: 5px;
+            background-color: #ffccff;
+            border-radius: 50%;
+        }
+        
+        .frosting-1 {
+            bottom: 80px;
+            left: 60px;
+        }
+        
+        .frosting-2 {
+            bottom: 80px;
+            right: 60px;
+        }
+        
+        .frosting-3 {
+            bottom: 140px;
+            left: 50px;
+        }
+        
+        .frosting-4 {
+            bottom: 140px;
+            right: 50px;
+        }
+        
+        @keyframes flicker {
+            0% { transform: translateX(-50%) scale(1); opacity: 1; }
+            100% { transform: translateX(-50%) scale(1.1); opacity: 0.8; }
+        }
+        
+        .btn-celebrate {
+            background-color: #ff3399;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border-radius: 30px;
+            box-shadow: 0 5px 15px rgba(255, 51, 153, 0.4);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .btn-celebrate:hover {
+            background-color: #e6007e;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 51, 153, 0.6);
+        }
+        
+        .btn-celebrate:active {
+            transform: translateY(1px);
+        }
+        
+        .message {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6600cc;
+            opacity: 0;
+            transition: opacity 1s;
+        }
+        
+        .message.show {
+            opacity: 1;
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            background-color: #f00;
+            opacity: 0;
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 40px;
+            height: 50px;
+            background-color: #ff0000;
+            border-radius: 50%;
+            opacity: 0;
+            animation: float 2s linear forwards; /* 풍선 속도 더 빠르게 (8초에서 5초로) */
+        }
+        
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            color: #ff3366;
+            opacity: 0;
+            z-index: 100;
+            animation: heart-pop 1.5s ease-out forwards;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+        }
+        
+        @keyframes heart-pop {
+            0% {
+                transform: scale(0) translate(0, 0);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: scale(1.5) translate(var(--tx), var(--ty));
+                opacity: 0;
+            }
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) scale(1);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .cake-container {
+                width: 150px;
+                height: 150px;
+            }
+            
+            .cake-base {
+                width: 140px;
+                height: 60px;
+            }
+            
+            .cake-middle {
+                bottom: 60px;
+                width: 120px;
+                height: 45px;
+            }
+            
+            .cake-top {
+                bottom: 105px;
+                width: 100px;
+                height: 30px;
+            }
+            
+            .candle {
+                bottom: 135px;
+                height: 25px;
+            }
+            
+            .flame {
+                bottom: 160px;
+                height: 25px;
+            }
+            
+            .strawberry {
+                width: 15px;
+                height: 18px;
+            }
+            
+            .strawberry-1 {
+                bottom: 105px;
+            }
+            
+            .strawberry-2 {
+                bottom: 105px;
+            }
+            
+            .strawberry-3 {
+                bottom: 135px;
+            }
+            
+            .strawberry-4 {
+                bottom: 135px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>민주야 생일 축하해!</h1>
+        <br>
+        <br>
+        
+        <div class="cake-container">
+            <div class="cake">
+                <div class="cake-base"></div>
+                <div class="cake-middle"></div>
+                <div class="cake-top"></div>
+                
+                <!-- 케이크 장식 -->
+                <div class="decoration decoration-1"></div>
+                <div class="decoration decoration-2"></div>
+                <div class="decoration decoration-3"></div>
+                <div class="decoration decoration-4"></div>
+                <div class="decoration decoration-5"></div>
+                <div class="decoration decoration-6"></div>
+                
+                <!-- 딸기 -->
+                <div class="strawberry strawberry-1"></div>
+                <div class="strawberry strawberry-2"></div>
+                <div class="strawberry strawberry-3"></div>
+                <div class="strawberry strawberry-4"></div>
+                
+                <!-- 크림 장식 -->
+                <div class="frosting frosting-1"></div>
+                <div class="frosting frosting-2"></div>
+                <div class="frosting frosting-3"></div>
+                <div class="frosting frosting-4"></div>
+                
+                <div class="candle"></div>
+                <div class="flame"></div>
+            </div>
+        </div>
+        
+        <button class="btn-celebrate" id="celebrateBtn">축하하기</button>
+        
+        <div class="message" id="message">
+          <p>사랑하는 울 민주, 생일 넘 축하해❤️<br>
+            민주가 있어서 항상 우리 조 분위기가 밝아>_<.<br></p>
+            내 친구들중에서 민주가 가장 귀여워~~~~,<br>
+            민주는 귀여운 병아리, 아기천사같아<br>
+            민주가 최고야😘
+            <p><br>오늘 하루도 화이팅💪🏻💪🏻💪🏻</p>
+            
+
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const celebrateBtn = document.getElementById('celebrateBtn');
+            const message = document.getElementById('message');
+            
+            celebrateBtn.addEventListener('click', function() {
+                // 메시지 표시
+                message.classList.add('show');
+                
+                // 풍선 효과
+                createBalloons();
+                
+                // 폭죽 효과
+                createConfetti();
+                
+                // 하트 효과 추가
+                createHearts();
+                
+                // 버튼 비활성화
+                celebrateBtn.disabled = true;
+                
+                // 5초 후 버튼 다시 활성화
+                setTimeout(function() {
+                    celebrateBtn.disabled = false;
+                    message.classList.remove('show');
+                }, 5000);
+            });
+            
+            function createHearts() {
+                const heartCharacters = ['❤️', '💕', '💖', '💗', '💓', '💘'];
+                const heartCount = 80; // 하트 개수
+                const buttonRect = celebrateBtn.getBoundingClientRect();
+                const centerX = buttonRect.left + buttonRect.width / 2;
+                const centerY = buttonRect.top + buttonRect.height / 2;
+                
+                for (let i = 0; i < heartCount; i++) {
+                    setTimeout(() => {
+                        const heart = document.createElement('div');
+                        heart.classList.add('heart');
+                        
+                        // 랜덤 하트 이모지 선택
+                        const heartIndex = Math.floor(Math.random() * heartCharacters.length);
+                        heart.innerHTML = heartCharacters[heartIndex];
+                        
+                        // 버튼 중앙에서 시작
+                        heart.style.left = `${centerX}px`;
+                        heart.style.top = `${centerY}px`;
+                        
+                        // 랜덤 방향과 거리
+                        const angle = Math.random() * Math.PI * 2; // 모든 방향으로
+                        const distance = 50 + Math.random() * 150; // 다양한 거리
+                        const tx = Math.cos(angle) * distance;
+                        const ty = Math.sin(angle) * distance;
+                        
+                        // 이동 방향과 거리 설정 
+                        heart.style.setProperty('--tx', `${tx}px`);
+                        heart.style.setProperty('--ty', `${ty}px`);
+                        
+                        // 크기 다양화
+                        const scale = 0.7 + Math.random() * 1.3;
+                        heart.style.fontSize = `${30 * scale}px`;
+                        
+                        // 애니메이션 속도 다양화
+                        const duration = 0.8 + Math.random() * 1.2;
+                        heart.style.animationDuration = `${duration}s`;
+                        
+                        document.body.appendChild(heart);
+                        
+                        // 애니메이션 끝난 후 제거
+                        setTimeout(() => {
+                            document.body.removeChild(heart);
+                        }, duration * 3000);
+                    }, i * 50); // 50ms 간격으로 하트 생성 (뿅뿅뿅 효과)
+                }
+            }
+            
+            function createBalloons() {
+                const colors = ['#ff0000', '#ff9900', '#ffff00', '#33cc33', '#3399ff', '#cc66ff'];
+                
+                for (let i = 0; i < 45; i++) { // 풍선 개수 증가
+                    const balloon = document.createElement('div');
+                    balloon.classList.add('balloon');
+                    
+                    // 랜덤 색상
+                    const colorIndex = Math.floor(Math.random() * colors.length);
+                    balloon.style.backgroundColor = colors[colorIndex];
+                    
+                    // 랜덤 위치
+                    const left = Math.random() * 100;
+                    balloon.style.left = left + '%';
+                    
+                    // 랜덤 크기
+                    const size = 30 + Math.random() * 30;
+                    balloon.style.width = size + 'px';
+                    balloon.style.height = size * 1.2 + 'px';
+                    
+                    // 랜덤 지연 (더 짧게)
+                    const delay = Math.random() * 3; // 더 빠른 생성
+                    balloon.style.animationDelay = delay + 's';
+                    
+                    document.body.appendChild(balloon);
+                    
+                    // 애니메이션 끝난 후 제거
+                    setTimeout(function() {
+                        document.body.removeChild(balloon);
+                    }, (delay + 5) * 2000); // 애니메이션 시간과 맞춤
+                }
+            }
+            
+            function createConfetti() {
+                const colors = ['#ff0000', '#ff9900', '#ffff00', '#33cc33', '#3399ff', '#cc66ff'];
+                
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.classList.add('confetti');
+                    
+                    // 랜덤 색상
+                    const colorIndex = Math.floor(Math.random() * colors.length);
+                    confetti.style.backgroundColor = colors[colorIndex];
+                    
+                    // 랜덤 형태
+                    const shape = Math.random();
+                    if (shape < 0.33) {
+                        confetti.style.borderRadius = '50%';
+                    } else if (shape < 0.66) {
+                        confetti.style.borderRadius = '0';
+                    } else {
+                        confetti.style.width = '8px';
+                        confetti.style.height = '8px';
+                        confetti.style.transform = 'rotate(45deg)';
+                    }
+                    
+                    // 랜덤 위치
+                    const left = Math.random() * 100;
+                    const top = 50 + Math.random() * 10;
+                    confetti.style.left = left + '%';
+                    confetti.style.top = top + '%';
+                    
+                    // 랜덤 크기
+                    const size = 5 + Math.random() * 10;
+                    confetti.style.width = size + 'px';
+                    confetti.style.height = size + 'px';
+                    
+                    document.body.appendChild(confetti);
+                    
+                    // 애니메이션
+                    const duration = 3 + Math.random() * 2;
+                    const startTime = performance.now();
+                    
+                    // 랜덤 각도
+                    const angle = (Math.random() * 360) * Math.PI / 180;
+                    const velocity = 3 + Math.random() * 5;
+                    const vx = Math.cos(angle) * velocity;
+                    const vy = Math.sin(angle) * velocity - 9.8; // 중력 효과
+                    
+                    // 애니메이션 시작
+                    confetti.style.opacity = '1';
+                    
+                    function animateConfetti(time) {
+                        const elapsed = (time - startTime) / 1000;
+                        
+                        if (elapsed < duration) {
+                            const x = left + vx * elapsed * 10;
+                            const y = top + (vy * elapsed + 0.5 * 9.8 * elapsed * elapsed) * 10;
+                            
+                            confetti.style.left = x + '%';
+                            confetti.style.top = y + '%';
+                            confetti.style.transform = 'rotate(' + (elapsed * 360) + 'deg)';
+                            
+                            requestAnimationFrame(animateConfetti);
+                        } else {
+                            document.body.removeChild(confetti);
+                        }
+                    }
+                    
+                    requestAnimationFrame(animateConfetti);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
